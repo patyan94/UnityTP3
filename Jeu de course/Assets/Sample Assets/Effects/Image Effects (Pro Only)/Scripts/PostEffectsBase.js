@@ -11,7 +11,7 @@ class PostEffectsBase extends MonoBehaviour {
 	
 	function CheckShaderAndCreateMaterial (s : Shader, m2Create : Material) : Material {
 		if (!s) { 
-			Debug.Log("Missing shader in " + this.ToString ());
+			//Debug.Log("Missing shader in " + this.ToString ());
 			enabled = false;
 			return null;
 		}
@@ -21,7 +21,7 @@ class PostEffectsBase extends MonoBehaviour {
 		
 		if (!s.isSupported) {
 			NotSupported ();
-			Debug.Log("The shader " + s.ToString() + " on effect "+this.ToString()+" is not supported on this platform!");
+			//Debug.Log("The shader " + s.ToString() + " on effect "+this.ToString()+" is not supported on this platform!");
 			return null;
 		}
 		else {
@@ -35,7 +35,7 @@ class PostEffectsBase extends MonoBehaviour {
 
 	function CreateMaterial (s : Shader, m2Create : Material) : Material {
 		if (!s) { 
-			Debug.Log ("Missing shader in " + this.ToString ());
+			//Debug.Log ("Missing shader in " + this.ToString ());
 			return null;
 		}
 			
@@ -63,7 +63,7 @@ class PostEffectsBase extends MonoBehaviour {
 	}
 	
 	function CheckResources () : boolean {
-		Debug.LogWarning ("CheckResources () for " + this.ToString() + " should be overwritten.");
+		//Debug.LogWarning ("CheckResources () for " + this.ToString() + " should be overwritten.");
 		return isSupported;
 	}
 	
@@ -109,12 +109,12 @@ class PostEffectsBase extends MonoBehaviour {
 	}
 
 	function ReportAutoDisable () {
-		Debug.LogWarning ("The image effect " + this.ToString() + " has been disabled as it's not supported on the current platform.");
+		//Debug.LogWarning ("The image effect " + this.ToString() + " has been disabled as it's not supported on the current platform.");
 	}
 			
 	// deprecated but needed for old effects to survive upgrading
 	function CheckShader (s : Shader) : boolean {
-		Debug.Log("The shader " + s.ToString () + " on effect "+ this.ToString () + " is not part of the Unity 3.2+ effects suite anymore. For best performance and quality, please ensure you are using the latest Standard Assets Image Effects (Pro only) package.");		
+		//Debug.Log("The shader " + s.ToString () + " on effect "+ this.ToString () + " is not part of the Unity 3.2+ effects suite anymore. For best performance and quality, please ensure you are using the latest Standard Assets Image Effects (Pro only) package.");		
 		if (!s.isSupported) {
 			NotSupported ();
 			return false;

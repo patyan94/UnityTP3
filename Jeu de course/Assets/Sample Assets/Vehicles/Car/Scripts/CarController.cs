@@ -1,4 +1,18 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public enum COLLECTABLE_TYPE
+{
+	BLUE_PROJECTILE = 0,
+	GREEN_PROJECTILE = 1,
+	RED_PROJECTILE = 2,
+	HEALING_OBJECT = 3,
+
+	NUM_COLL = 4
+}
 
 public class CarController : MonoBehaviour
 {
@@ -16,161 +30,332 @@ public class CarController : MonoBehaviour
 	// on the car's current speed. These gear and rev values can then be read and used by a GUI or Sound component.
 
 
-    [SerializeField] private float maxSteerAngle = 28;                              // The maximum angle the car can steer
-    [SerializeField] private float steeringResponseSpeed = 200;                     // how fast the steering responds
-    [SerializeField] [Range(0, 1)] private float maxSpeedSteerAngle = 0.23f;        // the reduction in steering angle at max speed
-    [SerializeField] [Range(0, .5f)] private float maxSpeedSteerResponse = 0.5f;    // the reduction in steer response at max speed
-    [SerializeField] private float maxSpeed = 60;                                   // the maximum speed (in meters per second!)
-    [SerializeField] private float maxTorque = 35;                                  // the maximum torque of the engine
-    [SerializeField] private float minTorque = 10;                                  // the minimum torque of the engine
-    [SerializeField] private float brakePower = 40;                                 // how powerful the brakes are at stopping the car
-    [SerializeField] private float adjustCentreOfMass = 0.25f;                      // vertical offset for the centre of mass
-    [SerializeField] private Advanced advanced;                                     // container for the advanced setting which will expose as a foldout in the inspector
-	[SerializeField] bool preserveDirectionWhileInAir = false;                      // flag for if the direction of travel to be preserved in the air (helps cars land in the right direction if doing huge jumps!)
+	[SerializeField]
+	private float
+		maxSteerAngle = 28;                              // The maximum angle the car can steer
+	[SerializeField]
+	private float
+		steeringResponseSpeed = 200;                     // how fast the steering responds
+	[SerializeField]
+	[Range(0, 1)]
+	private float
+		maxSpeedSteerAngle = 0.23f;        // the reduction in steering angle at max speed
+	[SerializeField]
+	[Range(0, .5f)]
+	private float
+		maxSpeedSteerResponse = 0.5f;    // the reduction in steer response at max speed
+	[SerializeField]
+	private float
+		maxSpeed = 60;                                   // the maximum speed (in meters per second!)
+	[SerializeField]
+	private float
+		maxTorque = 35;                                  // the maximum torque of the engine
+	[SerializeField]
+	private float
+		minTorque = 10;                                  // the minimum torque of the engine
+	[SerializeField]
+	private float
+		brakePower = 40;                                 // how powerful the brakes are at stopping the car
+	[SerializeField]
+	private float
+		adjustCentreOfMass = 0.25f;                      // vertical offset for the centre of mass
+	[SerializeField]
+	private Advanced
+		advanced;                                     // container for the advanced setting which will expose as a foldout in the inspector
+	[SerializeField]
+	bool
+		preserveDirectionWhileInAir = false;                      // flag for if the direction of travel to be preserved in the air (helps cars land in the right direction if doing huge jumps!)
+	[SerializeField]
+	private Collider[]
+		colliders;
+	public GameObject redProjectilePrefab;
+	public GameObject blueProjectilePrefab;
+	public GameObject greenProjectilePrefab;
+	GameObject projectile;
+	[SerializeField]
+	public Transform
+		ShootingPos;
+	public Vector3 jumpForce;
+	public float nitroValue;
+	public float rubberBandingEffect = 50.0f;
+	private float acceleratorBonus = 100000.0f;
+	bool enableBonusAcc = false;
+	[SerializeField]
+	public GameObject
+		leftArrow;
+	[SerializeField]
+	public GameObject
+		rightArrow;
 
-    [System.Serializable]
-    public class Advanced                                                           // the advanced settings for the car controller
-    {
-        [Range(0, 1)] public float burnoutSlipEffect = 0.4f;                        // how much the car wheels will slide when burning out
-        [Range(0, 1)] public float burnoutTendency = 0.2f;                          // how likely the car is to burnout 
-        [Range(0, 1)] public float spinoutSlipEffect = 0.5f;                        // how easily the car spins out when turning
-        [Range(0, 1)] public float sideSlideEffect = 0.5f;                          // how easily the car loses sideways grip 
+	[System.Serializable]
+	public class Advanced                                                           // the advanced settings for the car controller
+	{
+		[Range(0, 1)]
+		public float
+			burnoutSlipEffect = 0.4f;                        // how much the car wheels will slide when burning out
+		[Range(0, 1)]
+		public float
+			burnoutTendency = 0.2f;                          // how likely the car is to burnout 
+		[Range(0, 1)]
+		public float
+			spinoutSlipEffect = 0.5f;                        // how easily the car spins out when turning
+		[Range(0, 1)]
+		public float
+			sideSlideEffect = 0.5f;                          // how easily the car loses sideways grip 
 
-        public float downForce = 30;                                                // the amount of downforce applied (speed is factored in)
-        public int numGears = 5;                                                    // the number of gears
-        [Range(0, 1)] public float gearDistributionBias = 0.2f;                     // Controls whether the gears are bunched together towards the lower or higher end of the car's range of speed.
+		public float downForce = 30;                                                // the amount of downforce applied (speed is factored in)
+		public int numGears = 5;                                                    // the number of gears
+		[Range(0, 1)]
+		public float
+			gearDistributionBias = 0.2f;                     // Controls whether the gears are bunched together towards the lower or higher end of the car's range of speed.
 		public float steeringCorrection = 2f;                                       // How fast the steering returns to centre with no steering input
 		public float oppositeLockSteeringCorrection = 4f;                           // How fast the steering responds when steer input is in the opposite direction to the current wheel angle
-        public float reversingSpeedFactor = 0.3f;                                   // The car's maximum reverse speed, as a proportion of its max forward speed.
-        public float skidGearLockFactor = 0.1f;                                     // The car will not automatically change gear if the current skid factor is higher than this value.
-        public float accelChangeSmoothing = 2f;                                     // Used to smooth out changes in acceleration input.
-        public float gearFactorSmoothing = 5f;                                      // Controls the speed at which revs drop or raise to match new gear, after a gear change.
-        [Range(0,1)]public float revRangeBoundary = 0.8f;                           // The amount of the full rev range used in each gear.
-    }
+		public float reversingSpeedFactor = 0.3f;                                   // The car's maximum reverse speed, as a proportion of its max forward speed.
+		public float skidGearLockFactor = 0.1f;                                     // The car will not automatically change gear if the current skid factor is higher than this value.
+		public float accelChangeSmoothing = 2f;                                     // Used to smooth out changes in acceleration input.
+		public float gearFactorSmoothing = 5f;                                      // Controls the speed at which revs drop or raise to match new gear, after a gear change.
+		[Range(0, 1)]
+		public float
+			revRangeBoundary = 0.8f;                           // The amount of the full rev range used in each gear.
+	}
 
 
-    private float[] gearDistribution;                                               // Stores the caluclated change point for each gear (0-1 as a normalised amount relative to car's max speed)
-    private Wheel[] wheels;                                                         // Stores a reference to each wheel attached to this car.
-    private float accelBrake;                                                       // The acceleration or braking input (1 to -1 range)
-    private float smallSpeed;                                                       // A small proportion of max speed, used to decide when to start accelerating/braking when transitioning between fwd and reverse motion
-    private float maxReversingSpeed;                                                // The maximum reversing speed
+	private float[] gearDistribution;                                               // Stores the caluclated change point for each gear (0-1 as a normalised amount relative to car's max speed)
+	private Wheel[] wheels;                                                         // Stores a reference to each wheel attached to this car.
+	private float accelBrake;                                                       // The acceleration or braking input (1 to -1 range)
+	private float smallSpeed;                                                       // A small proportion of max speed, used to decide when to start accelerating/braking when transitioning between fwd and reverse motion
+	private float maxReversingSpeed;                                                // The maximum reversing speed
 	private bool immobilized;                                                       // Whether the car is accepting inputs.
 
+	private HashSet<GameObject> DangerouslyCloseVehicle = new HashSet<GameObject> ();
 
 	// publicly read-only props, useful for GUI, Sound effects, etc.
 	public int GearNum { get; private set; }                                        // the current gear we're in.
 	public float CurrentSpeed { get; private set; }                                 // the current speed of the car
-	public float CurrentSteerAngle{ get; private set; }                             // The current steering angle for steerable wheels.
+	public float CurrentSteerAngle { get; private set; }                             // The current steering angle for steerable wheels.
 	public float AccelInput { get; private set; }                                   // the current acceleration input
 	public float BrakeInput { get; private set; }                                   // the current brake input
-	public float GearFactor  { get; private set; }                                  // value between 0-1 indicating where the current revs fall within the current range of revs for this gear
+	public float GearFactor { get; private set; }                                  // value between 0-1 indicating where the current revs fall within the current range of revs for this gear
 	public float AvgPowerWheelRpmFactor { get; private set; }                       // the average RPM of all wheels marked as 'powered'
 	public float AvgSkid { get; private set; }                                      // the average skid factor from all wheels
-    public float RevsFactor { get; private set; }                                   // value between 0-1 indicating where the current revs fall between 0 and max revs
-    public float SpeedFactor { get;  private set; }                                 // value between 0-1 of the car's current speed relative to max speed
-	
-	public int NumGears {					// the number of gears set up on the car
+	public float RevsFactor { get; private set; }                                   // value between 0-1 indicating where the current revs fall between 0 and max revs
+	public float SpeedFactor { get; private set; }                                 // value between 0-1 of the car's current speed relative to max speed
+
+	public int NumGears {                   // the number of gears set up on the car
 		get { return advanced.numGears; }
-	}						
+	}
 
 
 	// the following values are provided as read-only properties,
 	// and are required by the Wheel script to compute grip, burnout, skidding, etc
-    public float MaxSpeed
-    {
-        get { return maxSpeed; }
-    }
+	public float MaxSpeed {
+		get { return maxSpeed; }
+	}
 
+	public float MaxTorque {
+		get { return maxTorque; }
+	}
 
-    public float MaxTorque
-    {
-        get { return maxTorque; }
-    }
+	public float BurnoutSlipEffect {
+		get { return advanced.burnoutSlipEffect; }
+	}
 
+	public float BurnoutTendency {
+		get { return advanced.burnoutTendency; }
+	}
 
-    public float BurnoutSlipEffect
-    {
-        get { return advanced.burnoutSlipEffect; }
-    }
+	public float SpinoutSlipEffect {
+		get { return advanced.spinoutSlipEffect; }
+	}
 
+	public float SideSlideEffect {
+		get { return advanced.sideSlideEffect; }
+	}
 
-    public float BurnoutTendency
-    {
-        get { return advanced.burnoutTendency; }
-    }
+	public float MaxSteerAngle {
+		get { return maxSteerAngle; }
+	}
 
-
-    public float SpinoutSlipEffect
-    {
-        get { return advanced.spinoutSlipEffect; }
-    }
-
-
-    public float SideSlideEffect
-    {
-        get { return advanced.sideSlideEffect; }
-    }
-
-
-    public float MaxSteerAngle
-    {
-        get { return maxSteerAngle; }
-    }
-    
 
 	// variables added due to separating out things into functions!
 	bool anyOnGround;
+	bool inAir = false;
 	float curvedSpeedFactor;
 	bool reversing;
 	float targetAccelInput; // target accel input is our desired acceleration input. We smooth towards it later
 
+	float CloseDrivingTime = 0.0f;
+	float timeInAir = 0.0f;
+	public GameObject SpeedNeedle;
+	[SerializeField]
+	int
+		respawnTime = 3;
+	[SerializeField]
+	float
+		InAirPointsBySecond = 1000.0f;
+	float CloseDrivingPointsBySecond = 100.0f;
+	public Text Points;
+	public Text Annoucement;
 
+	public void CollectObject ()
+	{
+		System.Random gen = new System.Random ();
 
+		COLLECTABLE_TYPE type = (COLLECTABLE_TYPE)gen.Next ((int)COLLECTABLE_TYPE.NUM_COLL);
+
+		switch (type) {
+		case COLLECTABLE_TYPE.BLUE_PROJECTILE:
+			projectile = blueProjectilePrefab;
+			break;
+		case COLLECTABLE_TYPE.RED_PROJECTILE:
+			projectile = redProjectilePrefab;
+			break;
+		case COLLECTABLE_TYPE.GREEN_PROJECTILE:
+			projectile = greenProjectilePrefab;
+			break;
+		case COLLECTABLE_TYPE.HEALING_OBJECT:
+			projectile = redProjectilePrefab;
+			SendMessage ("Heal");
+			break;
+		default : 
+			break;
+		}
+	}
+
+	void enableTurnTips (int turnIndex)
+	{
+
+		if (!leftArrow || ! rightArrow)
+			return;
+
+		switch (turnIndex) {
+		case 1:
+		case 8:
+		case 11:
+		case 14:
+		case 17:
+			leftArrow.SetActive (true);
+			break;
+		case 6:
+		case 12:
+		case 15:
+			rightArrow.SetActive (true);
+			break;
+		default:
+			leftArrow.SetActive (false);
+			rightArrow.SetActive (false);
+			break;
+		}
+	}
+
+	void disableTurnTips (bool enable)
+	{
+
+		if (!leftArrow || ! rightArrow)
+			return;
+
+		leftArrow.SetActive (false);
+		rightArrow.SetActive (false);
+	}
+
+	void Update ()
+	{
+		CloseDrivingPointsBySecond += Time.deltaTime;
+		timeInAir += Time.deltaTime;
+	}
 
 	void Awake ()
-    {
+	{
+		if (Annoucement)
+			Annoucement.text = "";
 		// get a reference to all wheel attached to the car.
-		wheels = GetComponentsInChildren<Wheel>();
+		wheels = GetComponentsInChildren<Wheel> ();
 
-		SetUpGears();
+		SetUpGears ();
 
 		// deactivate and reactivate the gameobject - this is a workaround
 		// to a bug where changes to wheelcolliders at runtime are not 'taken'
 		// by the rigidbody unless this step is performed :(
-		gameObject.SetActive(false);
-		gameObject.SetActive(true);
+		gameObject.SetActive (false);
+		gameObject.SetActive (true);
 
 		// a few useful speeds are calculated for use later:
-	    smallSpeed = maxSpeed*0.05f;
-        maxReversingSpeed = maxSpeed * advanced.reversingSpeedFactor;
+		smallSpeed = maxSpeed * 0.05f;
+		maxReversingSpeed = maxSpeed * advanced.reversingSpeedFactor;
 	}
 
-
-	void OnEnable()
+	void OnEnable ()
 	{
 		// set adjusted centre of mass.
 		rigidbody.centerOfMass = Vector3.up * adjustCentreOfMass;
 	}
 
-
-	public void Move (float steerInput, float accelBrakeInput)
-    {
+	public void Move (float steerInput, float accelBrakeInput, bool jumpActive, bool nitro)
+	{
 
 		// lose control of engine if immobilized
-		if (immobilized) accelBrakeInput = 0;
+		if (immobilized)
+			accelBrakeInput = 0;
 
-		ConvertInputToAccelerationAndBraking (accelBrakeInput);
+		ConvertInputToAccelerationAndBraking (accelBrakeInput, nitro, ComputeRubberBandingEffect (accelBrakeInput));
 		CalculateSpeedValues ();
 		HandleGearChanging ();
 		CalculateGearFactor ();
 		ProcessWheels (steerInput);
-        ApplyDownforce ();
-		CalculateRevs();
-		PreserveDirectionInAir();
+		ApplyDownforce ();
+		CalculateRevs ();
 
+		if (jumpActive && anyOnGround) {
+			Jump ();
+		}
+		RotateInAir (steerInput);
+		PreserveDirectionInAir ();
+		CalculateJumpStylePoints ();
+	}
+	
+	public void Shoot (bool shoot)
+	{
+		if (projectile != null && shoot) {
+			GameObject temp = Instantiate (projectile, ShootingPos.position, transform.rotation) as GameObject;
+
+			foreach (var c in colliders)
+				Physics.IgnoreCollision (temp.GetComponent<Collider> (), c);
+
+			temp.transform.position = ShootingPos.position;
+			temp.SendMessage ("SetParentCar", this, SendMessageOptions.DontRequireReceiver);
+			temp.SendMessage ("Shoot", ShootingPos.forward, SendMessageOptions.DontRequireReceiver);
+			temp.SendMessage ("ShootGreen", ShootingPos.forward, SendMessageOptions.DontRequireReceiver);
+
+			projectile = null;
+		}
 	}
 
-	void ConvertInputToAccelerationAndBraking (float accelBrakeInput)
+	bool ComputeRubberBandingEffect (float accelBrakeInput)
+	{
+		CarController cc = GameObject.FindGameObjectWithTag ("GameManager").GetComponent<CheckpointManager> ().getLastCar ();
+		return  (accelBrakeInput > 0.0f && cc && cc.GetInstanceID () == this.GetInstanceID ());
+	}
+
+	void Jump ()
+	{
+		//Debug.Log ("Jump");
+		rigidbody.AddForce (jumpForce);
+	}
+
+	void RotateInAir (float rotation)
+	{
+		float var = 0.0f;
+		if (!anyOnGround) {
+			if (rotation < 0.0f) {
+				var = -2.0f;
+			} else if (rotation > 0.0f) {
+				var = 2.0f;
+			}
+			transform.Rotate (new Vector3 (0.0f, var, 0.0f));
+		}
+	}
+
+	void ConvertInputToAccelerationAndBraking (float accelBrakeInput, bool nitro, bool rubberBanding)
 	{
 		// move.Z is the user's fwd/back input. We need to convert it into acceleration and braking.
 		// this differs based on if the car is currently moving forward or backward.
@@ -184,20 +369,17 @@ public class CarController : MonoBehaviour
 				// pressing forward while moving forward : accelerate!
 				targetAccelInput = accelBrakeInput;
 				BrakeInput = 0;
-			}
-			else {
-				// pressing forward while movnig backward : brake!
+			} else {
+				// pressing forward while moving backward : brake!
 				BrakeInput = accelBrakeInput;
 				targetAccelInput = 0;
 			}
-		}
-		else {
+		} else {
 			if (CurrentSpeed > smallSpeed) {
 				// pressing backward while moving forward : brake!
 				BrakeInput = -accelBrakeInput;
 				targetAccelInput = 0;
-			}
-			else {
+			} else {
 				// pressing backward while moving backward : accelerate (in reverse direction)
 				BrakeInput = 0;
 				targetAccelInput = accelBrakeInput;
@@ -205,7 +387,10 @@ public class CarController : MonoBehaviour
 			}
 		}
 		// smoothly move the current accel towards the target accel value.
-		AccelInput = Mathf.MoveTowards (AccelInput, targetAccelInput, Time.deltaTime * advanced.accelChangeSmoothing);
+		CarDamageScript damages = GetComponent<CarDamageScript> ();
+		float damageFactor = Mathf.Max (0.75f, damages.lifePoints / damages.lifePointsMax);
+		AccelInput = Mathf.MoveTowards (AccelInput, damageFactor *(targetAccelInput + (enableBonusAcc ? acceleratorBonus : 0) + (nitro ? nitroValue : 0) + (AccelInput>0.0f && rubberBanding ? rubberBandingEffect : 0)) , 
+		                                Time.deltaTime * advanced.accelChangeSmoothing);
 	}
 
 	void CalculateSpeedValues ()
@@ -215,6 +400,12 @@ public class CarController : MonoBehaviour
 		// speedfactor is a normalized representation of speed in relation to max speed:
 		SpeedFactor = Mathf.InverseLerp (0, reversing ? maxReversingSpeed : maxSpeed, Mathf.Abs (CurrentSpeed));
 		curvedSpeedFactor = reversing ? 0 : CurveFactor (SpeedFactor);
+
+		if (GetComponent<CarUserControlMP> ()) {
+			float RotationValue = SpeedFactor * 180;
+			SpeedNeedle.transform.localRotation = Quaternion.Euler (new Vector3 (0, 0, 180 - RotationValue));
+		}
+        
 	}
 
 	void HandleGearChanging ()
@@ -304,7 +495,7 @@ public class CarController : MonoBehaviour
 		RevsFactor = ULerp (revsRangeMin, revsRangeMax, GearFactor);
 	}
 
-	void PreserveDirectionInAir()
+	void PreserveDirectionInAir ()
 	{
 		// special feature which allows cars to remain roughly pointing in the direction of travel
 		if (!anyOnGround && preserveDirectionWhileInAir && rigidbody.velocity.magnitude > smallSpeed) {
@@ -314,51 +505,47 @@ public class CarController : MonoBehaviour
 	}
 
 	// simple function to add a curved bias towards 1 for a value in the 0-1 range
-    float CurveFactor (float factor)
-    {
-        return 1 - (1 - factor)*(1 - factor);
-    }
-	
-
-	// unclamped version of Lerp, to allow value to exceed the from-to range
-	float ULerp (float from, float to, float value)
-    {
-		return (1.0f - value)*from + value*to;
+	float CurveFactor (float factor)
+	{
+		return 1 - (1 - factor) * (1 - factor);
 	}
 
 
-	void SetUpGears()
+	// unclamped version of Lerp, to allow value to exceed the from-to range
+	float ULerp (float from, float to, float value)
+	{
+		return (1.0f - value) * from + value * to;
+	}
+
+	void SetUpGears ()
 	{
 		// the gear distribution is a range of normalized values marking out where the gear changes should occur
 		// over the normalized range of speeds for the car.
 		// eg, if the bias is centred, 5 gears would be evenly distributed as 0-0.2, 0.2-0.4, 0.4-0.6, 0.6-0.8, 0.8-1
 		// with a low bias, the gears are clumped towards the lower end of the speed range, and vice-versa for high bias.
 
-        gearDistribution = new float[advanced.numGears + 1];
-        for (int g = 0; g <= advanced.numGears; ++g)
-		{
-            float gearPos = g / (float)advanced.numGears;
+		gearDistribution = new float[advanced.numGears + 1];
+		for (int g = 0; g <= advanced.numGears; ++g) {
+			float gearPos = g / (float)advanced.numGears;
 
-			float lowBias = gearPos*gearPos*gearPos;
-            float highBias = 1 - (1 - gearPos) * (1 - gearPos) * (1 - gearPos);
+			float lowBias = gearPos * gearPos * gearPos;
+			float highBias = 1 - (1 - gearPos) * (1 - gearPos) * (1 - gearPos);
 
-			if (advanced.gearDistributionBias < 0.5f)
-			{
-				gearPos = Mathf.Lerp(gearPos, lowBias, 1 - (advanced.gearDistributionBias * 2));
+			if (advanced.gearDistributionBias < 0.5f) {
+				gearPos = Mathf.Lerp (gearPos, lowBias, 1 - (advanced.gearDistributionBias * 2));
 			} else {
-                gearPos = Mathf.Lerp(gearPos, highBias, (advanced.gearDistributionBias - 0.5f) * 2);
+				gearPos = Mathf.Lerp (gearPos, highBias, (advanced.gearDistributionBias - 0.5f) * 2);
 			}
 
-			gearDistribution[g] = gearPos;
+			gearDistribution [g] = gearPos;
 		}
 	}
 
-	
-	void OnDrawGizmosSelected()
+	void OnDrawGizmosSelected ()
 	{
 		// visualise the adjusted centre of mass in the editor
 		Gizmos.color = Color.cyan;
-		Gizmos.DrawWireSphere(rigidbody.position + Vector3.up * adjustCentreOfMass, 0.2f);
+		Gizmos.DrawWireSphere (rigidbody.position + Vector3.up * adjustCentreOfMass, 0.2f);
 	}
 
 	// Immobilize can be called from other objects, if the car needs to be made uncontrollable
@@ -367,10 +554,120 @@ public class CarController : MonoBehaviour
 	{
 		immobilized = true;
 	}
-	
+
 	// Reset is called via the ObjectResetter script, if present.
-	public void Reset()
+	public void Reset ()
 	{
 		immobilized = false;
+	}
+
+	public void ReSpawn ()
+	{
+		StartCoroutine (ReSpawnImpl ());
+	}
+
+	IEnumerator ReSpawnImpl ()
+	{
+		CarUserControlMP uc = GetComponent<CarUserControlMP> ();
+		if (uc)
+			uc.enabled = false;
+		rigidbody.velocity = Vector3.zero;
+
+		GameObject path = GameObject.FindGameObjectWithTag ("PathA");
+		Transform[] points = path.GetComponent<WaypointCircuit> ().Waypoints;
+		Vector3 closestSpawnPoint = points [0].position;
+		float distance = Mathf.Infinity;
+		Vector3 currentPos = transform.position;
+		foreach (Transform point in points) {
+			float newDist = (currentPos - point.position).magnitude;
+			if (newDist < distance) {
+				distance = newDist;
+				closestSpawnPoint = point.position;
+			}
+		}
+		rigidbody.velocity = Vector3.zero;
+		transform.position = closestSpawnPoint;
+
+		if (Annoucement) {
+			int count = respawnTime;
+			do {
+				Annoucement.text = count.ToString ();
+				yield return new WaitForSeconds (1.0f);
+				count--;
+			} while (count > 0);
+			Annoucement.text = "Partez!";
+			if (uc)
+				uc.enabled = true;
+			yield return new WaitForSeconds (1.0f);
+			Annoucement.text = "";
+		}
+	}
+
+	void OnTriggerEnter (Collider other)
+	{
+		if (other.gameObject == gameObject)
+			return;
+		if (other.gameObject.CompareTag ("OutOfBounds")) {
+			StartCoroutine (ReSpawnImpl ());
+		} else if (CompareTag ("Player") && other.gameObject.CompareTag ("NearContactZone")) {
+			//Debug.Log ("CollEnter");
+			if (DangerouslyCloseVehicle.Count == 0)
+				CloseDrivingTime = 0.0f;
+			DangerouslyCloseVehicle.Add (other.gameObject);
+		} else if (other.gameObject.CompareTag ("CollectableObject")) {
+			CollectObject ();
+			Destroy (other.gameObject);
+		} else if (other.gameObject.CompareTag ("Accelerator")) {
+			
+			enableBonusAcc = true;
+		}
+	}
+
+	void OnTriggerExit (Collider other)
+	{
+		if (other.gameObject == gameObject)
+			return;
+		if (GetComponent<CarUserControlMP> () && other.gameObject.CompareTag ("NearContactZone")) {
+			if (DangerouslyCloseVehicle.Contains (other.gameObject)) {
+				DangerouslyCloseVehicle.Remove (other.gameObject);
+				//Debug.Log ("CollExit");
+				AddCloseDrivingPoints ();
+			}
+		} else if (other.gameObject.CompareTag ("Accelerator")) {
+		
+			enableBonusAcc = false;
+		}
+	}
+
+	private void AddCloseDrivingPoints ()
+	{
+		float points = float.Parse (Points.text);
+		points += CloseDrivingTime * CloseDrivingPointsBySecond;
+		Points.text = ((int)points).ToString ();
+	}
+
+	void CalculateJumpStylePoints ()
+	{
+		if (!GetComponent<CarUserControlMP> ())
+			return;
+		if (inAir && anyOnGround) {
+			float points = float.Parse (Points.text);
+			points += timeInAir * InAirPointsBySecond;
+			Points.text = ((int)points).ToString ();
+			//Debug.Log ("Landed");
+		} else if (!inAir && !anyOnGround) {
+			timeInAir = 0.0f;
+			//Debug.Log ("Jumped");
+		}
+		inAir = !anyOnGround;
+	}
+
+	void OnCollisionEnter (Collision other)
+	{
+		//Debug.Log ("Collsion");
+		float damage;
+
+		if (GetComponent<CarUserControlMP> ())
+			DangerouslyCloseVehicle.Clear ();
 	}
 }

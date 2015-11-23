@@ -71,7 +71,7 @@ public class CarAIControl : MonoBehaviour
 			// Car should not be moving,
 			// (so use accel/brake to get to zero speed)
 			float accel = Mathf.Clamp(-carController.CurrentSpeed,-1,1);
-			carController.Move(0,accel);
+			carController.Move(0,accel, false, false);
 
         } else {
 			// we're driving somewhere!
@@ -167,7 +167,7 @@ public class CarAIControl : MonoBehaviour
 	        float steer = Mathf.Clamp ( targetAngle * steerSensitivity, -1, 1 )  * Mathf.Sign(carController.CurrentSpeed);
 
 	        // feed input to the car controller.
-			carController.Move(steer,accel);
+			carController.Move(steer,accel, false, false);
 
 			// if appropriate, stop driving when we're close enough to the target.
 			if (stopWhenTargetReached && localTarget.magnitude < reachTargetThreshold)

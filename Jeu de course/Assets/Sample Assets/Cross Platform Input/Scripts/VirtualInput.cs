@@ -14,7 +14,7 @@ public abstract class VirtualInput {
         // check if we already have an axis with that name and log and error if we do
         if (virtualAxes.ContainsKey(axis.name))
         {
-            Debug.LogError("There is already a virtual axis named " + axis.name + " registered.");
+            //Debug.LogError("There is already a virtual axis named " + axis.name + " registered.");
         }
         else
         {
@@ -36,7 +36,7 @@ public abstract class VirtualInput {
         // check if already have a buttin with that name and log an error if we do
         if (virtualButtons.ContainsKey(button.name))
         {
-            Debug.LogError("There is already a virtual button named " + button.name + " registered.");
+            //Debug.LogError("There is already a virtual button named " + button.name + " registered.");
         }
         else
         {

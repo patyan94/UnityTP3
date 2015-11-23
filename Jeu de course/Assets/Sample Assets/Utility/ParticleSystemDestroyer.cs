@@ -29,7 +29,7 @@ public class ParticleSystemDestroyer : MonoBehaviour {
 		{
 			yield return null;
 		}
-		Debug.Log ("stopping "+name);
+		//Debug.Log ("stopping "+name);
 
 		// turn off emission
 		foreach (var system in systems) {

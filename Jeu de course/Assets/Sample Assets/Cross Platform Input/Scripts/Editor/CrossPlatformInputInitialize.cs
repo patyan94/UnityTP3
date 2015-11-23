@@ -91,7 +91,7 @@ public class CrossPlatformInitialize {
     
 	static void SetEnabled(string defineName, bool enable, bool mobile)
 	{
-		//Debug.Log("setting "+defineName+" to "+enable);
+		////Debug.Log("setting "+defineName+" to "+enable);
 		foreach (var group in mobile ? mobileBuildTargetGroups : buildTargetGroups)
 		{
 			var defines = GetDefinesList(group);

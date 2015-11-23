@@ -12,7 +12,7 @@ public class AutoMobileShaderSwitch : MonoBehaviour {
 	void OnEnable () {
 #if UNITY_IPHONE || UNITY_ANDROID || UNITY_WP8 || UNITY_BLACKBERRY
 			var renderers = FindObjectsOfType<Renderer>();
-			Debug.Log (renderers.Length+" renderers");
+			//Debug.Log (renderers.Length+" renderers");
 			var oldMaterials = new List<Material>();
 			var newMaterials = new List<Material>();
 
@@ -41,7 +41,7 @@ public class AutoMobileShaderSwitch : MonoBehaviour {
 								newMaterials.Add(newMaterial);
 								++materialsReplaced;
 							}
-							Debug.Log ("replacing "+r.gameObject.name+" renderer "+n+" with "+newMaterials[oldMaterials.IndexOf(material)].name);
+							//Debug.Log ("replacing "+r.gameObject.name+" renderer "+n+" with "+newMaterials[oldMaterials.IndexOf(material)].name);
 							modifiedMaterials[n] = newMaterials[oldMaterials.IndexOf(material)];
 							++materialInstancesReplaced;
 						}
@@ -52,11 +52,11 @@ public class AutoMobileShaderSwitch : MonoBehaviour {
 					}
 				}
 			}
-			Debug.Log (materialInstancesReplaced+" material instances replaced");
-			Debug.Log (materialsReplaced+" materials replaced");
+			//Debug.Log (materialInstancesReplaced+" material instances replaced");
+			//Debug.Log (materialsReplaced+" materials replaced");
 			for(int n=0; n<oldMaterials.Count; ++n)
 			{
-				Debug.Log (oldMaterials[n].name+" ("+oldMaterials[n].shader.name+")"+" replaced with "+newMaterials[n].name+" ("+newMaterials[n].shader.name+")");
+				//Debug.Log (oldMaterials[n].name+" ("+oldMaterials[n].shader.name+")"+" replaced with "+newMaterials[n].name+" ("+newMaterials[n].shader.name+")");
 			}
 #endif
 	}
