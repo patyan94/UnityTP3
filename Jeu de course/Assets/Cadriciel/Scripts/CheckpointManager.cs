@@ -75,7 +75,7 @@ public class CheckpointManager : MonoBehaviour
             _carPositions[car] = new PositionData();
         }
 
-        InvokeRepeating("getRaceRanking", 0.0f, 0.005f);
+        InvokeRepeating("getRaceRanking", 0.0f, 0.01f);
     }
 
     public void getRaceRanking()
@@ -92,11 +92,13 @@ public class CheckpointManager : MonoBehaviour
 
     public CarController getFirstCar()
     {
+        getRaceRanking();
         return _carPosList.First().Key;
     }
 
     public CarController getLastCar()
     {
+        getRaceRanking();
         return _carPosList.Last().Key;
     }
 
@@ -139,17 +141,13 @@ public class CheckpointManager : MonoBehaviour
                         _finished = true;
                         GetComponent<RaceManager>().EndRace(car.name.ToLower());
                     }
-                    if (carData.lastCheckPoint == -1 )
-                        carData.lastCheckPoint = 0;
                 }
             }
-            else if (carData.lastCheckPoint < checkPointIndex - 1) //Checkpoints must be hit in order
+            else if (carData.lastCheckPoint == checkPointIndex - 1) //Checkpoints must be hit in order
             {
                 carData.lastCheckPoint = checkPointIndex;
             }
         }
-
-        _carPositions[car] = carData;
 
     }
 

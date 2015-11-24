@@ -18,7 +18,6 @@ public class Checkpoint : MonoBehaviour
 			CarController car = other.transform.GetComponentInParent<CarController>();
 			if (car)
 			{
-				_manager.CheckpointTriggered(car,_index);
 				car.SendMessage("enableTurnTips",_index,SendMessageOptions.DontRequireReceiver);
 			}
 		}
@@ -31,8 +30,9 @@ public class Checkpoint : MonoBehaviour
 		{
 			CarController car = other.transform.GetComponentInParent<CarController>();
 			if (car)
-			{
-				car.SendMessage("disableTurnTips",false,SendMessageOptions.DontRequireReceiver);
+            {
+                _manager.CheckpointTriggered(car, _index);
+                car.SendMessage("disableTurnTips",false,SendMessageOptions.DontRequireReceiver);
 			}
 		}
 	}
