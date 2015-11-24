@@ -129,6 +129,8 @@ public class CheckpointManager : MonoBehaviour
                 if (carData.lastCheckPoint == CheckPointList.Count() - 1)
                 {
                     carData.lastCheckPoint = checkPointIndex;
+                    if (IsPlayer(car))
+                        car.gameObject.SendMessage("UpdateDirectionHelp", CheckPointList[(checkPointIndex + 1) % SNumberOfCheckPoints].transform);
                     carData.lap += 1;
                     //Debug.Log(car.name + " lap " + carData.lap);
                     if (IsPlayer(car))
@@ -146,6 +148,8 @@ public class CheckpointManager : MonoBehaviour
             else if (carData.lastCheckPoint == checkPointIndex - 1) //Checkpoints must be hit in order
             {
                 carData.lastCheckPoint = checkPointIndex;
+                if(IsPlayer(car))
+                    car.gameObject.SendMessage("UpdateDirectionHelp", CheckPointList[(checkPointIndex + 1) % SNumberOfCheckPoints].transform);
             }
         }
 

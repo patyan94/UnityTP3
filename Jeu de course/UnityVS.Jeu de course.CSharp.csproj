@@ -142,6 +142,7 @@
     <Compile Include="Assets\Sample Assets\Vehicles\Car\Scripts\Suspension.cs" />
     <Compile Include="Assets\Sample Assets\Vehicles\Car\Scripts\Wheel.cs" />
     <Compile Include="Assets\Spawner.cs" />
+    <Compile Include="Assets\UpdateLookAt.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Sample Assets\Cameras\Camera Guidelines.txt" />

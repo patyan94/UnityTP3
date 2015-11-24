@@ -6,7 +6,13 @@ public class CarUserControlMP : MonoBehaviour
 {
 	private CarController car;  // the car controller we want to use
 
-	[SerializeField]
+    public UpdateLookAt DirectionHelp;
+    public void UpdateDirectionHelp(Transform target)
+    {
+        DirectionHelp.SetTarget(target);
+    }
+
+    [SerializeField]
 	private string vertical = "Vertical";
 
 	[SerializeField]

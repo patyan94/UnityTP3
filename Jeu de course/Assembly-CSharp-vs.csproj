@@ -129,6 +129,7 @@
      <Compile Include="Assets\Sample Assets\Vehicles\Car\Scripts\Suspension.cs" />
      <Compile Include="Assets\Sample Assets\Vehicles\Car\Scripts\Wheel.cs" />
      <Compile Include="Assets\Spawner.cs" />
+     <Compile Include="Assets\UpdateLookAt.cs" />
      <None Include="Assets\Sample Assets\Effects\Toon Shading\Shaders\Toony-Basic.shader" />
      <None Include="Assets\Sample Assets\Prototyping\Shaders\WorldCoord Diffuse.shader" />
      <None Include="Assets\Sample Assets\Effects\Light Shafts\Shaders\SamplePositions.shader" />
