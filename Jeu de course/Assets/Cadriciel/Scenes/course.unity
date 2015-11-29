@@ -11354,7 +11354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _carContainer: {fileID: 1158375330}
-  _totalLaps: 3
+  _totalLaps: 1
   CheckPointList:
   - {fileID: 476746002}
   - {fileID: 1575062423}

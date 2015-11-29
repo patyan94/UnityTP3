@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using System.Text;
 
 public class RaceManager : MonoBehaviour 
 {
@@ -56,9 +57,10 @@ public class RaceManager : MonoBehaviour
 		CarActivation(false);
 		_announcement.fontSize = 20;
 		int count = _endCountdown;
+        string ranking = GetRanking();
 		do 
 		{
-			_announcement.text = "Victoire: " + winner + " en premiere place. Retour au titre dans " + count.ToString();
+            _announcement.text = "Victoire: " + winner + " en premiere place. Retour au titre dans " + count.ToString() + "\n\n" + ranking;
 			yield return new WaitForSeconds(1.0f);
 			count--;
 		}
@@ -66,6 +68,19 @@ public class RaceManager : MonoBehaviour
 
 		Application.LoadLevel("boot");
 	}
+
+    string GetRanking()
+    {
+        List<KeyValuePair<CarController, CheckpointManager.PositionData>> carRanking = gameObject.GetComponent<CheckpointManager>().CarsRanking;
+        StringBuilder ranking = new StringBuilder();
+        ranking.Append("Classement : \n\n");
+        int i = 1;
+        foreach(KeyValuePair<CarController, CheckpointManager.PositionData> car in carRanking)
+        {
+            ranking.AppendFormat("{0}  -  {1}\n", i++, car.Key.name);
+        }
+        return ranking.ToString();
+    }
 
 	public void Announce(string announcement, float duration = 2.0f)
 	{

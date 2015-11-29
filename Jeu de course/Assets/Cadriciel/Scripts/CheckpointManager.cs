@@ -19,11 +19,11 @@ public class CheckpointManager : MonoBehaviour
     private bool _finished = false;
 
     private Dictionary<CarController, PositionData> _carPositions = new Dictionary<CarController, PositionData>();
-    List<KeyValuePair<CarController, PositionData>>  _carPosList;
+    public List<KeyValuePair<CarController, PositionData>>  CarsRanking;
     public List<Checkpoint> CheckPointList;
 
 
-    private class PositionData
+    public class PositionData
     {
         public int lap;
         public int lastCheckPoint;
@@ -81,10 +81,10 @@ public class CheckpointManager : MonoBehaviour
     public void getRaceRanking()
     {
 
-        _carPosList = _carPositions.ToList<KeyValuePair<CarController, PositionData>>();
-        _carPosList.Sort(new CustomComparer());
+        CarsRanking = _carPositions.ToList<KeyValuePair<CarController, PositionData>>();
+        CarsRanking.Sort(new CustomComparer());
         int i = 1;
-        foreach (KeyValuePair<CarController, PositionData> car in _carPosList)
+        foreach (KeyValuePair<CarController, PositionData> car in CarsRanking)
         {
             car.Value.position = i++;
         }
@@ -93,13 +93,13 @@ public class CheckpointManager : MonoBehaviour
     public CarController getFirstCar()
     {
         getRaceRanking();
-        return _carPosList.First().Key;
+        return CarsRanking.First().Key;
     }
 
     public CarController getLastCar()
     {
         getRaceRanking();
-        return _carPosList.Last().Key;
+        return CarsRanking.Last().Key;
     }
 
     public CarController getNext(CarController car)
@@ -109,10 +109,10 @@ public class CheckpointManager : MonoBehaviour
 
         PositionData carPosData = null;
         carPosData = _carPositions[car];
-        if (carPosData == null || carPosData.position >= _carPosList.Count)
+        if (carPosData == null || carPosData.position >= CarsRanking.Count)
             return null;
 
-        itemToReturn = _carPosList[carPosData.position].Key;
+        itemToReturn = CarsRanking[carPosData.position].Key;
 
         return itemToReturn;
     }
