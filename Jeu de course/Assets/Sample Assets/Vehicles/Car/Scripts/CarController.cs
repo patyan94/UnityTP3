@@ -282,6 +282,7 @@ public class CarController : MonoBehaviour
 		// a few useful speeds are calculated for use later:
 		smallSpeed = maxSpeed * 0.05f;
 		maxReversingSpeed = maxSpeed * advanced.reversingSpeedFactor;
+		
 	}
 
 	void OnEnable ()

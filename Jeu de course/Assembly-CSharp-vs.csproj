@@ -54,6 +54,7 @@
      <Compile Include="Assets\Cadriciel\Scripts\MultiplayerMode.cs" />
      <Compile Include="Assets\Cadriciel\Scripts\ProjectileBehaviour.cs" />
      <Compile Include="Assets\Cadriciel\Scripts\RaceManager.cs" />
+     <Compile Include="Assets\Cadriciel\Scripts\SmartProjectileBehaviour.cs" />
      <Compile Include="Assets\Cadriciel\Scripts\StartScreenManager.cs" />
      <Compile Include="Assets\GreenProjectile.cs" />
      <Compile Include="Assets\RedProjectile.cs" />
