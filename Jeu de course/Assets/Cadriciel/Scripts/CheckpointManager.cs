@@ -20,7 +20,8 @@ public class CheckpointManager : MonoBehaviour
 
     private Dictionary<CarController, PositionData> _carPositions = new Dictionary<CarController, PositionData>();
     public List<KeyValuePair<CarController, PositionData>>  CarsRanking;
-    public List<Checkpoint> CheckPointList;
+	public List<Checkpoint> CheckPointList;
+	public List<Transform> CheckPointHelperList;
 
 
     public class PositionData
@@ -130,7 +131,7 @@ public class CheckpointManager : MonoBehaviour
                 {
                     carData.lastCheckPoint = checkPointIndex;
                     if (IsPlayer(car))
-                        car.gameObject.SendMessage("UpdateDirectionHelp", CheckPointList[(checkPointIndex + 1) % SNumberOfCheckPoints].transform);
+						car.gameObject.SendMessage("UpdateDirectionHelp", CheckPointHelperList[(checkPointIndex + 1) % SNumberOfCheckPoints]);
                     carData.lap += 1;
                     //Debug.Log(car.name + " lap " + carData.lap);
                     if (IsPlayer(car))
@@ -149,7 +150,7 @@ public class CheckpointManager : MonoBehaviour
             {
                 carData.lastCheckPoint = checkPointIndex;
                 if(IsPlayer(car))
-                    car.gameObject.SendMessage("UpdateDirectionHelp", CheckPointList[(checkPointIndex + 1) % SNumberOfCheckPoints].transform);
+					car.gameObject.SendMessage("UpdateDirectionHelp", CheckPointHelperList[(checkPointIndex + 1) % SNumberOfCheckPoints]);
             }
         }
 

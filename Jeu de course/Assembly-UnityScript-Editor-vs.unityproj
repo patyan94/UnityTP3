@@ -49,14 +49,26 @@
      <Compile Include="Assets\Sample Assets\Effects\Image Effects (Pro Only)\Editor\Image Effects\DepthOfFieldScatterEditor.js" />
      <Compile Include="Assets\Sample Assets\Effects\Light Shafts\Editor\LightShaftsEditor.js" />
      <None Include="Assets\Sample Assets\Effects\Toon Shading\Shaders\Toony-Basic.shader" />
+     <None Include="Assets\Water Tower\Shaders\DNGS.shader" />
+     <None Include="Assets\Water Tower\Shaders\DNGSA.shader" />
+     <None Include="Assets\Cars Pack\readme.txt" />
+     <None Include="Assets\Destroyed_city_FREE\Destroyed_city_FREE_Info.txt" />
      <None Include="Assets\Sample Assets\Prototyping\Shaders\WorldCoord Diffuse.shader" />
+     <None Include="Assets\Cars Pack\Shaders\CarLights.shader" />
+     <None Include="Assets\Cars Pack\Shaders\DiffuseColorUnlit.shader" />
      <None Include="Assets\Sample Assets\Effects\Light Shafts\Shaders\SamplePositions.shader" />
+     <None Include="Assets\Cadriciel\Cars Pack\Shaders\DiffuseColorUnlit.shader" />
      <None Include="Assets\Sample Assets\Effects\Image Effects (Pro Only)\Shaders\_DepthOfField\DepthOfFieldScatter.shader" />
      <None Include="Assets\Sample Assets\Effects\Tessellation Shaders\Shaders\BumpedSpecularSmooth.shader" />
      <None Include="Assets\Sample Assets\Effects\Light Shafts\Shaders\Shared.cginc" />
+     <None Include="Assets\GDG_Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Sample Assets\Effects\Light Shafts\Shaders\Coord.shader" />
+     <None Include="Assets\Cadriciel\Cars Pack\readme.txt" />
      <None Include="Assets\Sample Assets\Effects\Image Effects (Pro Only)\Shaders\_DepthOfField\DepthOfFieldDX11.shader" />
+     <None Include="Assets\Cadriciel\Cars Pack\Shaders\ApocalipticCar.shader" />
      <None Include="Assets\Sample Assets\Vehicles\Car\Shaders\DiffuseReflectiveShader.shader" />
+     <None Include="Assets\Cars Pack\Shaders\ApocalipticCar.shader" />
+     <None Include="Assets\Cars Pack\Shaders\Mobile Vertex Colored.shader" />
      <None Include="Assets\Sample Assets\Effects\Projectors\Shaders\Projector Additive.shader" />
      <None Include="Assets\Sample Assets\Vehicles\Car\Shaders\ReflectiveDiffuseSpecTransp.shader" />
      <None Include="Assets\Sample Assets\Effects\Light Shafts\Shaders\InterpolateAlongRays.shader" />
@@ -64,21 +76,30 @@
      <None Include="Assets\Sample Assets\Effects\Toon Shading\Shaders\Toony-BasicOutline.shader" />
      <None Include="Assets\Sample Assets\Effects\Particle Systems\Shaders\Priority Particle Alpha.shader" />
      <None Include="Assets\Sample Assets\Vehicles\Car\Shaders\ReflectiveDiffuseSpec.shader" />
+     <None Include="Assets\Cadriciel\Cars Pack\Shaders\CarLights.shader" />
      <None Include="Assets\Sample Assets\Effects\Particle Systems\Particle Systems Guidelines.txt" />
      <None Include="Assets\Sample Assets\Cross Platform Input\Cross Platform Input Guidelines.txt" />
+     <None Include="Assets\Cars Pack\Shaders\Seat.shader" />
      <None Include="Assets\Sample Assets\Effects\Particle Systems\Shaders\Priority Particle Add (Soft).shader" />
      <None Include="Assets\Sample Assets\Effects\Toon Shading\Shaders\Toony-LightedOutline.shader" />
      <None Include="Assets\Sample Assets\Effects\Toon Shading\Shaders\Toony-Lighted.shader" />
+     <None Include="Assets\Destroyed_city_FREE\Standard Assets\Water (Pro Only)\Sources\Shaders\FX-Water.shader" />
      <None Include="Assets\Sample Assets\Effects\Shaders\Mobile-Spec.shader" />
      <None Include="Assets\Sample Assets\Vehicles\Car\Car Guidelines.txt" />
+     <None Include="Assets\Cadriciel\Cars Pack\Shaders\Mobile Vertex Colored.shader" />
      <None Include="Assets\Sample Assets\Cameras\Camera Guidelines.txt" />
      <None Include="Assets\Sample Assets\Effects\Light Shafts\Shaders\Raymarch.shader" />
      <None Include="Assets\Sample Assets\Effects\Light Shafts\Shaders\FinalInterpolation.shader" />
+     <None Include="Assets\Cadriciel\Cars Pack\Shaders\Seat.shader" />
+     <None Include="Assets\GDG_Assets\Sounds\Sounds.txt" />
      <None Include="Assets\Sample Assets\Effects\Light Shafts\Shaders\Depth.shader" />
+     <None Include="Assets\Cadriciel\Cars Pack\Shaders\CarGlass.shader" />
+     <None Include="Assets\Destroyed_city_FREE\Shaders\AlphaTest-DiffuseDoubleSide.shader" />
      <None Include="Assets\Sample Assets\Effects\Light Shafts\Light Shafts Guidelines.txt" />
      <None Include="Assets\Sample Assets\Effects\Particle Systems\Shaders\Priority Particle Add.shader" />
      <None Include="Assets\Sample Assets\Effects\Tessellation Shaders\Shaders\BumpedSpecularDisplacement.shader" />
      <None Include="Assets\Sample Assets\Effects\Light Shafts\Shaders\ColorFilter.shader" />
+     <None Include="Assets\Cars Pack\Shaders\CarGlass.shader" />
  <Reference Include="Assembly-UnityScript">
  <HintPath>C:/Users/yannd/Documents/GitHub/UnityTP3/Jeu de course/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
  </Reference>
@@ -87,6 +108,12 @@
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.8/Editor/UnityEditor.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="GDG_Breakable_Editor_Dll">
+ <HintPath>C:/Users/yannd/Documents/GitHub/UnityTP3/Jeu de course/Assets/GDG_Assets/Scripts/Editor/GDG_Breakable_Editor_Dll.dll</HintPath>
+ </Reference>
+ <Reference Include="GDGPhysicsDllV1_1">
+ <HintPath>C:/Users/yannd/Documents/GitHub/UnityTP3/Jeu de course/Assets/GDG_Assets/Scripts/Physics/PhysicsController/DLL/GDGPhysicsDllV1_1.dll</HintPath>
  </Reference>
  <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
  <HintPath>C:/Users/yannd/Documents/GitHub/UnityTP3/Jeu de course/Assets/UnityVS/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>

@@ -1,0 +1,145 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: body_agera
+  m_Shader: {fileID: 4800000, guid: ff331d640473e5c4c864653c6c9b2b14, type: 3}
+  m_ShaderKeywords: []
+  m_CustomRenderQueue: -1
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Cube
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Pattern
+        second:
+          m_Texture: {fileID: 2800000, guid: 015680f7b1a574a4d8d697dba5ccf54e, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _LMRScratchesGDirtB
+        second:
+          m_Texture: {fileID: 2800000, guid: 5c6024eb7addf304b90cd37f64b00671, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Snow
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Clouds
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _node2379
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _FrostSnowClouds
+        second:
+          m_Texture: {fileID: 2800000, guid: fc1eaa0eeb03d2a49900b9220a7f7d6c, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _TileU
+        second: 1.30769241
+      data:
+        first:
+          name: _TileV
+        second: .846153915
+      data:
+        first:
+          name: _PatternRotation
+        second: 0
+      data:
+        first:
+          name: _Dirt
+        second: -.100000001
+      data:
+        first:
+          name: _Gloss
+        second: 5.53846169
+      data:
+        first:
+          name: _node566
+        second: 0
+      data:
+        first:
+          name: _node576
+        second: 0
+      data:
+        first:
+          name: _node916
+        second: 0
+      data:
+        first:
+          name: _node946
+        second: 0
+      data:
+        first:
+          name: _SnowInt
+        second: .375
+      data:
+        first:
+          name: _node1482
+        second: 0
+      data:
+        first:
+          name: _node1498
+        second: 0
+      data:
+        first:
+          name: _node1520
+        second: 0
+      data:
+        first:
+          name: _node1812
+        second: 0
+    m_Colors:
+      data:
+        first:
+          name: _Color
+        second: {r: .56078434, g: .686274529, b: .756862819, a: 1}
+      data:
+        first:
+          name: _DiffuseColor
+        second: {r: .17657873, g: .291410655, b: .338235319, a: 1}
+      data:
+        first:
+          name: _PatternColor
+        second: {r: .470912635, g: .475559354, b: .492647052, a: 1}
+      data:
+        first:
+          name: _node1721
+        second: {r: .5, g: .5, b: .5, a: 1}

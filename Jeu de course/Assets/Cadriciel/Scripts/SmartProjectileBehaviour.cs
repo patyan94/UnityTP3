@@ -47,6 +47,8 @@ public class SmartProjectileBehaviour : MonoBehaviour
 			DrawPath ();
 		}
 
+        if (rigidbody.velocity == Vector3.zero)
+            Destroy(this);
 	}
 
 	void DrawPath ()
@@ -75,7 +77,7 @@ public class SmartProjectileBehaviour : MonoBehaviour
 			car.SendMessage ("receiveDamage", damage);
 			handleProjetctileDestruction(car);
 
-		} else if (other.transform.parent.tag == "Wall" || other.transform.parent.tag == "Obstacles") {
+		} else if (other.CompareTag("Wall") || other.CompareTag("Obstacles")) {
 
 			GameObject tempExplosion = Instantiate (explosion, transform.position, Quaternion.identity) as GameObject;
 			handleProjetctileDestruction(car);
@@ -85,15 +87,24 @@ public class SmartProjectileBehaviour : MonoBehaviour
 
 	void handleProjetctileDestruction(CarController car){
 
-		if (proType == ProjectileType.RED)
-			Destroy (this);
+        if (proType == ProjectileType.RED)
+        {
+            Destroy(this);
+            Debug.Log("Red Hit Target");
+        }
 
-		else if (proType == ProjectileType.BLUE) {
-			if (car.gameObject.GetInstanceID () == targetCar.GetInstanceID ()) {
-				Destroy (this);
-				Debug.Log ("Hit Target");
-			}
-		}
+        else if (proType == ProjectileType.BLUE)
+        {
+            if (car.gameObject.GetInstanceID() == targetCar.GetInstanceID())
+            {
+                Destroy(this);
+                Debug.Log("Blue Hit Target");
+            }
+        }
+        else
+        {
+            Debug.Log("Green Hit Target");
+        }
 
 	}
 

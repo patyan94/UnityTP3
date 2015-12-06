@@ -77,7 +77,8 @@ public class RaceManager : MonoBehaviour
         int i = 1;
         foreach(KeyValuePair<CarController, CheckpointManager.PositionData> car in carRanking)
         {
-            ranking.AppendFormat("{0}  -  {1}\n", i++, car.Key.name);
+			if(car.Key.gameObject.activeSelf)
+            	ranking.AppendFormat("{0}  -  {1}\n", i++, car.Key.name);
         }
         return ranking.ToString();
     }

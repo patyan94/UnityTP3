@@ -1,0 +1,192 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: body_gt90
+  m_Shader: {fileID: 4800000, guid: ff331d640473e5c4c864653c6c9b2b14, type: 3}
+  m_ShaderKeywords: []
+  m_CustomRenderQueue: -1
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Cube
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Diffuse
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Pattern
+        second:
+          m_Texture: {fileID: 2800000, guid: 015680f7b1a574a4d8d697dba5ccf54e, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _LMRScratchesGDirtB
+        second:
+          m_Texture: {fileID: 2800000, guid: ede18f44407eb4b4ca0cc38d87c797b8, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Snow
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Clouds
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _node2379
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _FrostSnowClouds
+        second:
+          m_Texture: {fileID: 2800000, guid: fc1eaa0eeb03d2a49900b9220a7f7d6c, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Noise
+        second:
+          m_Texture: {fileID: 2800000, guid: 2302f6d3fe2439b4db4326608ece9fc4, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _MatCap
+        second:
+          m_Texture: {fileID: 2800000, guid: ed3e6a96d6510254d9c42462ab795fb6, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Lightmap
+        second:
+          m_Texture: {fileID: 2800000, guid: 49619810e0bf37a41b57b5fdff145731, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _SpecularRGBandGlossA
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _FresnelFactor
+        second: 1
+      data:
+        first:
+          name: _Fresnel
+        second: .25373134
+      data:
+        first:
+          name: _TileU
+        second: .923076868
+      data:
+        first:
+          name: _TileV
+        second: 1.53846157
+      data:
+        first:
+          name: _PatternRotation
+        second: 1.62758183
+      data:
+        first:
+          name: _Dirt
+        second: -.100000001
+      data:
+        first:
+          name: _Gloss
+        second: 5.16923094
+      data:
+        first:
+          name: _node566
+        second: 0
+      data:
+        first:
+          name: _node576
+        second: 0
+      data:
+        first:
+          name: _node916
+        second: 0
+      data:
+        first:
+          name: _node946
+        second: 0
+      data:
+        first:
+          name: _SnowInt
+        second: .714285672
+      data:
+        first:
+          name: _node1482
+        second: 0
+      data:
+        first:
+          name: _node1498
+        second: 0
+      data:
+        first:
+          name: _node1520
+        second: 0
+      data:
+        first:
+          name: _node1812
+        second: 0
+    m_Colors:
+      data:
+        first:
+          name: _Color
+        second: {r: .29411763, g: .27589187, b: .26600343, a: 1}
+      data:
+        first:
+          name: _DiffuseColor
+        second: {r: .0882353187, g: .0882353187, b: .0882353187, a: 1}
+      data:
+        first:
+          name: _PatternColor
+        second: {r: .375, g: .309584171, b: .137867644, a: 1}
+      data:
+        first:
+          name: _node1721
+        second: {r: .5, g: .5, b: .5, a: 1}
+      data:
+        first:
+          name: _SpecularColor
+        second: {r: .352941155, g: .352941155, b: .352941155, a: 1}

@@ -1,0 +1,377 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: body_supra4
+  m_Shader: {fileID: 4800000, guid: ff331d640473e5c4c864653c6c9b2b14, type: 3}
+  m_ShaderKeywords: []
+  m_CustomRenderQueue: -1
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 2800000, guid: e71f528961d725f49b9a55b8594486d9, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BumpMap
+        second:
+          m_Texture: {fileID: 2800000, guid: 940ac89120bbee84f9ca8ac41ac6699e, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Cube
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Diffuse
+        second:
+          m_Texture: {fileID: 2800000, guid: e71f528961d725f49b9a55b8594486d9, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Pattern
+        second:
+          m_Texture: {fileID: 2800000, guid: 015680f7b1a574a4d8d697dba5ccf54e, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _LMRScratchesGDirtB
+        second:
+          m_Texture: {fileID: 2800000, guid: e13114b3afd9dbe4c934f02446d234e9, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Snow
+        second:
+          m_Texture: {fileID: 2800000, guid: fc1eaa0eeb03d2a49900b9220a7f7d6c, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Clouds
+        second:
+          m_Texture: {fileID: 2800000, guid: bd83f0e1f2a92914ca2327bd0f95bbcd, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _node2379
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _FrostSnowClouds
+        second:
+          m_Texture: {fileID: 2800000, guid: fc1eaa0eeb03d2a49900b9220a7f7d6c, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _node7
+        second:
+          m_Texture: {fileID: 2800000, guid: e052812bee41b734cb35e59d85bf4a07, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Matcap
+        second:
+          m_Texture: {fileID: 2800000, guid: e052812bee41b734cb35e59d85bf4a07, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Noise
+        second:
+          m_Texture: {fileID: 2800000, guid: 2302f6d3fe2439b4db4326608ece9fc4, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _MatCap
+        second:
+          m_Texture: {fileID: 2800000, guid: e052812bee41b734cb35e59d85bf4a07, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Lightmap
+        second:
+          m_Texture: {fileID: 2800000, guid: e71f528961d725f49b9a55b8594486d9, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _node43
+        second:
+          m_Texture: {fileID: 2800000, guid: f63740626bfed114cb343f131bfd6878, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _SpecularRGBandGlossA
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _LightMap
+        second:
+          m_Texture: {fileID: 2800000, guid: 832fb15e11a62234f80d1ec6f86afd87, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Reflect
+        second:
+          m_Texture: {fileID: 2800000, guid: c7823349d54534cd1b3078b6bf95c848, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _node10
+        second:
+          m_Texture: {fileID: 2800000, guid: e71f528961d725f49b9a55b8594486d9, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Decal
+        second:
+          m_Texture: {fileID: 2800000, guid: b5ae7d1d52d263941b686a91e4e64985, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _node84
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _node169
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _node185
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _Cutoff
+        second: .5
+      data:
+        first:
+          name: _Shininess
+        second: .17236951
+      data:
+        first:
+          name: _FresnelFactor
+        second: 1.80769229
+      data:
+        first:
+          name: _Fresnel
+        second: .509471893
+      data:
+        first:
+          name: _Specular
+        second: 0
+      data:
+        first:
+          name: _TileU
+        second: 0
+      data:
+        first:
+          name: _TileV
+        second: 2.07692313
+      data:
+        first:
+          name: _PatternRotation
+        second: 2.30009484
+      data:
+        first:
+          name: _Dirt
+        second: -.100000001
+      data:
+        first:
+          name: _Gloss
+        second: 5.53846169
+      data:
+        first:
+          name: _node566
+        second: 0
+      data:
+        first:
+          name: _node576
+        second: 0
+      data:
+        first:
+          name: _node916
+        second: 0
+      data:
+        first:
+          name: _node946
+        second: 0
+      data:
+        first:
+          name: _SnowInt
+        second: 0
+      data:
+        first:
+          name: _node1482
+        second: 0
+      data:
+        first:
+          name: _node1498
+        second: 0
+      data:
+        first:
+          name: _node1520
+        second: 1.39285719
+      data:
+        first:
+          name: _node1812
+        second: .410714298
+      data:
+        first:
+          name: _node64
+        second: 0
+      data:
+        first:
+          name: _node40
+        second: 0
+      data:
+        first:
+          name: _node52
+        second: 45
+      data:
+        first:
+          name: _node53
+        second: 6.28310013
+      data:
+        first:
+          name: _node58
+        second: 0
+      data:
+        first:
+          name: _Scratches
+        second: 1
+      data:
+        first:
+          name: _node70
+        second: 0
+      data:
+        first:
+          name: _node71
+        second: 0
+      data:
+        first:
+          name: _node69
+        second: 0
+      data:
+        first:
+          name: _node26
+        second: 0
+      data:
+        first:
+          name: _node27
+        second: 0
+      data:
+        first:
+          name: _Freshell
+        second: 1.70493698
+      data:
+        first:
+          name: _node65
+        second: 0
+      data:
+        first:
+          name: _node73
+        second: .673076928
+      data:
+        first:
+          name: _node14
+        second: .313432842
+      data:
+        first:
+          name: _node147
+        second: 0
+      data:
+        first:
+          name: _node287
+        second: 1
+      data:
+        first:
+          name: _node337
+        second: 0
+    m_Colors:
+      data:
+        first:
+          name: _Color
+        second: {r: .816176474, g: .2640571, b: .2640571, a: 1}
+      data:
+        first:
+          name: _SpecColor
+        second: {r: .589552283, g: .589552283, b: .589552283, a: 1}
+      data:
+        first:
+          name: _Diffuse
+        second: {r: .772058845, g: .227076113, b: .227076113, a: 1}
+      data:
+        first:
+          name: _Specular
+        second: {r: .25, g: .25, b: .25, a: 1}
+      data:
+        first:
+          name: _DiffuseColor
+        second: {r: .220588207, g: .196258619, b: .196258619, a: 1}
+      data:
+        first:
+          name: _PatternColor
+        second: {r: .224805355, g: .374011129, b: .727941155, a: 1}
+      data:
+        first:
+          name: _node1721
+        second: {r: 0, g: 0, b: 0, a: 1}
+      data:
+        first:
+          name: _SpecularColor
+        second: {r: .411764681, g: .411764681, b: .411764681, a: 1}
+      data:
+        first:
+          name: _node31
+        second: {r: .5, g: .5, b: .5, a: 1}
+      data:
+        first:
+          name: _node67
+        second: {r: .897058785, g: .098940298, b: .098940298, a: 1}
+      data:
+        first:
+          name: _DirtColor
+        second: {r: .610294104, g: .504080772, b: .435283303, a: 1}

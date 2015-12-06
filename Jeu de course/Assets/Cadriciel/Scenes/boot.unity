@@ -172,19 +172,19 @@ GUIText:
   m_GameObject: {fileID: 1200897201}
   m_Enabled: 1
   serializedVersion: 3
-  m_Text: Prototype de jeu de course
+  m_Text: ' Racalyptic'
   m_Anchor: 4
   m_Alignment: 0
   m_PixelOffset: {x: 0, y: 0}
   m_LineSpacing: 1
   m_TabSize: 4
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Font: {fileID: 12800000, guid: 4eaa76847deca3e4494207f2b152a7ec, type: 3}
   m_Material: {fileID: 0}
-  m_FontSize: 50
+  m_FontSize: 150
   m_FontStyle: 0
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4280622117
   m_PixelCorrect: 1
   m_RichText: 1
 --- !u!4 &1200897203
@@ -194,7 +194,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1200897201}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .5, y: .870000005, z: 0}
+  m_LocalPosition: {x: .469999999, y: .810000002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -248,7 +248,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -310,11 +310,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f2f559f2f44a124184a2d55b2b94074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartButtonTexture: {fileID: 0}
-  ExitButtonTexture: {fileID: 0}
-  StartButtonPosition: {x: 0, y: 0}
+  StartButtonTexture: {fileID: 2800000, guid: 1a32bb4dd8b3720449c1a11db7980003, type: 3}
+  ExitButtonTexture: {fileID: 2800000, guid: 704a7e39fb0974d48b24a9ad0b91b07c, type: 3}
+  StartButtonPosition: {x: 125, y: 0}
   StartButtonSize: {x: 100, y: 100}
-  ExitButtonPosition: {x: 0, y: 0}
+  ExitButtonPosition: {x: 225, y: 0}
   ExitButtonSize: {x: 100, y: 100}
 --- !u!4 &1530793287
 Transform:
@@ -328,3 +328,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!1 &1766603386
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1766603388}
+  - 131: {fileID: 1766603387}
+  m_Layer: 0
+  m_Name: Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!131 &1766603387
+GUITexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1766603386}
+  m_Enabled: 1
+  m_Texture: {fileID: 2800000, guid: 01053f88c7bfa9b4e9909e495838b8b8, type: 3}
+  m_Color: {r: .5, g: .5, b: .5, a: .5}
+  m_PixelInset:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  m_LeftBorder: 0
+  m_RightBorder: 0
+  m_TopBorder: 0
+  m_BottomBorder: 0
+--- !u!4 &1766603388
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1766603386}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .5, y: .5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4

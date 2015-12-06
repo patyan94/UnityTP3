@@ -25,16 +25,13 @@ public class StartScreenManager : MonoBehaviour
     }
     void OnGUI()
     {
-        float x = Screen.width / 2 - StartButtonSize.x / 2;
-        float y = Screen.height / 2 - StartButtonSize.y / 2;
-        if (GUI.Button(new Rect(x, y, StartButtonSize.x, StartButtonSize.y), "Start"))
+        Vector2 screenCenter = new Vector2(Screen.width / 2, Screen.height / 2);
+		if (GUI.Button(new Rect(screenCenter.x + StartButtonPosition.x, screenCenter.y + StartButtonPosition.y, StartButtonSize.x, StartButtonSize.y), StartButtonTexture))
         {
             Application.LoadLevel("course");
         }
 
-        x = Screen.width / 2 - StartButtonSize.x / 2;
-        y = Screen.height / 2 - StartButtonSize.y / 2 + StartButtonSize.y + StartButtonSize.y * 0.1f;
-        if (GUI.Button(new Rect(x, y, ExitButtonSize.x, ExitButtonSize.y), "Exit"))
+		if (GUI.Button(new Rect(screenCenter.x + ExitButtonPosition.x, screenCenter.y + ExitButtonPosition.y, ExitButtonSize.x, ExitButtonSize.y), ExitButtonTexture))
         {
             Debug.Log("QUIT");
             Application.Quit();

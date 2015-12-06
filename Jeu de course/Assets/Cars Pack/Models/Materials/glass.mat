@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: glass
+  m_Shader: {fileID: 4800000, guid: f942164e75a9f8a4a9141fe51c71105d, type: 3}
+  m_ShaderKeywords: []
+  m_CustomRenderQueue: -1
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Cube
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DirtB
+        second:
+          m_Texture: {fileID: 2800000, guid: 5c6024eb7addf304b90cd37f64b00671, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _LmScrDirt
+        second:
+          m_Texture: {fileID: 2800000, guid: 1bd67d96d4773ff4791424f0274119a5, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _Cutoff
+        second: .5
+      data:
+        first:
+          name: _Specular
+        second: .410714298
+      data:
+        first:
+          name: _Opacity
+        second: .571428597
+      data:
+        first:
+          name: _node132
+        second: .482142836
+      data:
+        first:
+          name: _node143
+        second: 0
+      data:
+        first:
+          name: _node152
+        second: 0
+      data:
+        first:
+          name: _node175
+        second: 0
+      data:
+        first:
+          name: _node179
+        second: 0
+      data:
+        first:
+          name: _Specula
+        second: 0
+    m_Colors:
+      data:
+        first:
+          name: _Color
+        second: {r: .36470589, g: .756862819, b: .274509817, a: 1}
+      data:
+        first:
+          name: _Diffuse
+        second: {r: .135596871, g: .157433465, b: .161764681, a: 1}

@@ -57,6 +57,9 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="GDGPhysicsDllV1_1">
+      <HintPath>Assets\GDG_Assets\Scripts\Physics\PhysicsController\DLL\GDGPhysicsDllV1_1.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Cadriciel\Scripts\CarDamageScript.cs" />
@@ -69,6 +72,33 @@
     <Compile Include="Assets\Cadriciel\Scripts\RaceManager.cs" />
     <Compile Include="Assets\Cadriciel\Scripts\SmartProjectileBehaviour.cs" />
     <Compile Include="Assets\Cadriciel\Scripts\StartScreenManager.cs" />
+    <Compile Include="Assets\Destroyed_city_FREE\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs" />
+    <Compile Include="Assets\Destroyed_city_FREE\Standard Assets\Water (Pro Only)\Sources\Scripts\Water.cs" />
+    <Compile Include="Assets\GDG_Assets\Breakable Barrel\Scripts\Barrel_Controller.cs" />
+    <Compile Include="Assets\GDG_Assets\Breakable Barrel\Scripts\Barrel_DL0.cs" />
+    <Compile Include="Assets\GDG_Assets\Breakable Barrel\Scripts\Barrel_DL1.cs" />
+    <Compile Include="Assets\GDG_Assets\Breakable Barrel\Scripts\Barrel_DL1_Master.cs" />
+    <Compile Include="Assets\GDG_Assets\Breakable Barrel\Scripts\Barrel_DL2.cs" />
+    <Compile Include="Assets\GDG_Assets\Breakable Barrel\Scripts\Barrel_DL2_Master.cs" />
+    <Compile Include="Assets\GDG_Assets\Breakable Barrel\Scripts\Barrel_DL3.cs" />
+    <Compile Include="Assets\GDG_Assets\Breakable Cube01\Scripts\Cube01_Controller.cs" />
+    <Compile Include="Assets\GDG_Assets\Breakable Cube01\Scripts\Cube01_DL0.cs" />
+    <Compile Include="Assets\GDG_Assets\Breakable Cube01\Scripts\Cube01_DL1.cs" />
+    <Compile Include="Assets\GDG_Assets\Breakable Cube01\Scripts\Cube01_DL1_Master.cs" />
+    <Compile Include="Assets\GDG_Assets\Breakable Egg\Scripts\Egg_Controller.cs" />
+    <Compile Include="Assets\GDG_Assets\Breakable Egg\Scripts\Egg_DL0.cs" />
+    <Compile Include="Assets\GDG_Assets\Breakable Egg\Scripts\Egg_DL1.cs" />
+    <Compile Include="Assets\GDG_Assets\Breakable Egg\Scripts\Egg_DL1_Master.cs" />
+    <Compile Include="Assets\GDG_Assets\Breakable Egg\Scripts\Egg_DL2.cs" />
+    <Compile Include="Assets\GDG_Assets\Breakable Egg\Scripts\Egg_DL2_Master.cs" />
+    <Compile Include="Assets\GDG_Assets\Breakable Egg\Scripts\Egg_DL3.cs" />
+    <Compile Include="Assets\GDG_Assets\Scripts\Other\BreakTrigger.cs" />
+    <Compile Include="Assets\GDG_Assets\Scripts\Other\Cargo.cs" />
+    <Compile Include="Assets\GDG_Assets\Scripts\Other\Launcher.cs" />
+    <Compile Include="Assets\GDG_Assets\Scripts\Other\Projectile.cs" />
+    <Compile Include="Assets\GDG_Assets\Scripts\Other\projectile_Explosive.cs" />
+    <Compile Include="Assets\GDG_Assets\Scripts\Physics\PhysicsController\ExplosionSphereController_Extended.cs" />
+    <Compile Include="Assets\GDG_Assets\Scripts\Physics\PhysicsController\FPSController_Singleton_Extended.cs" />
     <Compile Include="Assets\GreenProjectile.cs" />
     <Compile Include="Assets\RedProjectile.cs" />
     <Compile Include="Assets\Sample Assets\Cameras\Scripts\AbstractTargetFollower.cs" />
@@ -146,6 +176,25 @@
     <Compile Include="Assets\UpdateLookAt.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Cadriciel\Cars Pack\Shaders\ApocalipticCar.shader" />
+    <None Include="Assets\Cadriciel\Cars Pack\Shaders\CarGlass.shader" />
+    <None Include="Assets\Cadriciel\Cars Pack\Shaders\CarLights.shader" />
+    <None Include="Assets\Cadriciel\Cars Pack\Shaders\DiffuseColorUnlit.shader" />
+    <None Include="Assets\Cadriciel\Cars Pack\Shaders\Mobile Vertex Colored.shader" />
+    <None Include="Assets\Cadriciel\Cars Pack\Shaders\Seat.shader" />
+    <None Include="Assets\Cadriciel\Cars Pack\readme.txt" />
+    <None Include="Assets\Cars Pack\Shaders\ApocalipticCar.shader" />
+    <None Include="Assets\Cars Pack\Shaders\CarGlass.shader" />
+    <None Include="Assets\Cars Pack\Shaders\CarLights.shader" />
+    <None Include="Assets\Cars Pack\Shaders\DiffuseColorUnlit.shader" />
+    <None Include="Assets\Cars Pack\Shaders\Mobile Vertex Colored.shader" />
+    <None Include="Assets\Cars Pack\Shaders\Seat.shader" />
+    <None Include="Assets\Cars Pack\readme.txt" />
+    <None Include="Assets\Destroyed_city_FREE\Destroyed_city_FREE_Info.txt" />
+    <None Include="Assets\Destroyed_city_FREE\Shaders\AlphaTest-DiffuseDoubleSide.shader" />
+    <None Include="Assets\Destroyed_city_FREE\Standard Assets\Water (Pro Only)\Sources\Shaders\FX-Water.shader" />
+    <None Include="Assets\GDG_Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
+    <None Include="Assets\GDG_Assets\Sounds\Sounds.txt" />
     <None Include="Assets\Sample Assets\Cameras\Camera Guidelines.txt" />
     <None Include="Assets\Sample Assets\Cross Platform Input\Cross Platform Input Guidelines.txt" />
     <None Include="Assets\Sample Assets\Effects\Image Effects (Pro Only)\Shaders\_DepthOfField\DepthOfFieldDX11.shader" />
@@ -177,6 +226,8 @@
     <None Include="Assets\Sample Assets\Vehicles\Car\Shaders\DiffuseReflectiveShader.shader" />
     <None Include="Assets\Sample Assets\Vehicles\Car\Shaders\ReflectiveDiffuseSpec.shader" />
     <None Include="Assets\Sample Assets\Vehicles\Car\Shaders\ReflectiveDiffuseSpecTransp.shader" />
+    <None Include="Assets\Water Tower\Shaders\DNGS.shader" />
+    <None Include="Assets\Water Tower\Shaders\DNGSA.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
